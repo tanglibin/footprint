@@ -1,0 +1,8 @@
+page{font-family: PingFang SC;font-size: 28rpx;color: #333;background: #f6f6f6;height: 100%;}
+.container{height: 100%;display: flex;flex-direction: column;justify-content: space-between;}
+.btn{background-image: linear-gradient(to right, #f86785, #b666bb);color: #fff;margin-top: 60rpx;}
+.footer-btn-box{display: flex;}
+.footer-btn-box .cancel, .footer-btn-box .ok{flex: 1;margin: 0;border-radius: 0;background-color: #efefef;}
+.footer-btn-box .cancel{color: #E64340;margin-right: 4rpx!important;}
+.footer-btn-box .ok{color: #1AAD19;}
+.foot-btn{position: fixed;bottom: 0;left: 0;right: 0;padding: 30rpx 0;}

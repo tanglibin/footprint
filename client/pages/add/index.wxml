@@ -1,0 +1,93 @@
+<view class="container">
+  <view class="form">
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class="form-item">
+        <text class="label">到达日期: </text>
+        <text>{{date}}</text>
+      </view>
+    </picker>
+    <view class="form-item" bindtap="openRegion">
+      <text class="label">地点: </text>
+      <text>{{province+ (city ? (' - '+city) : '')}}</text>
+    </view>
+    <view class="form-item">
+      <text class="label">经度(lng): </text>
+      <input type="digit" value="{{lng}}" bindinput="bindLngInput" placeholder="非必填" />
+    </view>
+    <view class="form-item">
+      <text class="label">纬度(lat): </text>
+      <input type="digit" value="{{lat}}" bindinput="bindLatInput" placeholder="非必填"/>
+    </view>
+    <button class="btn savebtn" bindtap="save">保存</button>
+  </view>
+
+  <view class="tips">
+    <text class="tip">若在【地点】一栏未找到您要的地址，可通过手动录入经纬度的方式进行添加。</text>
+    <text class="tip">经纬度可以网上搜索，或者PC端网页搜索【拾取坐标系统】手动选择获取。</text>
+  </view>
+</view>
+
+<page-container 
+  show="{{show}}"
+  position="right"
+  customStyle="z-index:999"
+  bindenter="onEnter"
+>
+  <view class="region-page">
+    <!-- 左侧省 -->
+    <view class="province">
+      <scroll-view 
+        class="scroll-view" 
+        scroll-y="true"  
+        scroll-into-view="p_{{provinceActive}}" 
+        scroll-with-animation="true" 
+        enhanced="{{true}}" 
+        show-scrollbar="{{false}}" 
+      >
+        <view 
+          wx:for="{{region}}" 
+          wx:key="index" 
+          data-index="{{index}}" 
+          id="p_{{index}}" 
+          class="province-item {{index == provinceActive ? 'active' : ''}}" 
+          catchtap="chooseProvince"
+        >
+          {{item.province}}
+        </view>
+      </scroll-view>
+    </view>
+    <!-- 右侧市 -->
+    <view class="city">
+      <scroll-view 
+        class="scroll-view" 
+        scroll-y="true" 
+        scroll-into-view="c_{{provinceActive}}" 
+        scroll-with-animation="true" 
+        enhanced="{{true}}" 
+        show-scrollbar="{{false}}"
+      >
+        <view wx:for="{{region}}" class="city-skin" wx:key="index" id="c_{{index}}">
+          <text class="province-txt">{{item.province}}</text>
+          <view class="city-box">
+            <view 
+              wx:for="{{item.city}}" 
+              wx:for-item="city" 
+              wx:for-index="idx" 
+              wx:key="idx" 
+              data-p="{{index}}"
+              data-c="{{idx}}"
+              class="city-item {{index==provinceActive && idx===cityActive ? 'active' : ''}}" 
+              catchtap="chooseCity"
+            >
+              {{city}}
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 下方按钮 -->
+  <view class="foot-btn">
+    <button class="btn okbtn" bindtap="select">确定</button>
+  </view>
+</page-container>

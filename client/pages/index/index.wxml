@@ -1,0 +1,7 @@
+<view class="title-box">
+  <view class="title">记录你去过的山山水水</view>
+  <view class="title">生成你的专属足迹地图，分享你走过的世界。</view>
+</view>
+<image class="earth-icon" mode="widthFix" src="../../images/earth.png"></image>
+
+<button bindtap="open" class="btn">开启足迹</button>

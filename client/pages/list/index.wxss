@@ -1,0 +1,7 @@
+.map{width: 100%;flex: 1;}
+.footer{padding: 20rpx 0 60rpx;}
+.text-block{display: flex;align-items: center;justify-content: center;}
+.high{font-size: 42rpx;color: #ff6780;padding: 0 10rpx;text-decoration: underline;}
+.detail-page{text-align: center;}
+.addr-box{padding:60rpx 30rpx;}
+.addr-str{color: #ff6780;display: inline;padding: 0 6rpx;}

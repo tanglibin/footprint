@@ -1,0 +1,67 @@
+<wxs module="info_wxs">
+  var format = function(str) {
+    return str.substring(5).replace('-','.');
+  }
+  module.exports.format = format;
+</wxs>
+
+<view class="more-btn" bindtap="openSheet">
+  <view class="dot"></view>
+  <view class="dot"></view>
+  <view class="dot"></view>
+</view>
+
+<scroll-view class="scroll-view" scroll-y="true"  scroll-with-animation="true" enhanced="{{true}}" show-scrollbar="{{false}}" >
+  <!-- 以城市分组展示 -->
+  <view wx:if="{{tabIndex == 0}}" class="wrap">
+    <view wx:for="{{cityList}}" wx:for-item="data" wx:for-index="index1"  wx:key="index1" class="city-skin">
+      <view class="left-block">{{data.title}}</view>
+      <view class="city-box">
+        <view wx:for="{{data.list}}" wx:key="index" class="city-item">
+          <text class="city-text">{{item.city || item.province}}</text>
+          <text class="city-date-text">({{item.date}})</text>
+          <image wx:if="{{showDelBtn}}" bindtap="del" data-id="{{item._id}}" data-title="{{item.city || item.province}}" class="del-icon" mode="widthFix" src="../../images/del.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 以时间线展示 -->
+  <view wx:if="{{tabIndex == 1}}" class="wrap">
+    <view wx:for="{{dateList}}" wx:for-item="data" wx:for-index="index1"  wx:key="index1" class="skin">
+      <view class="left-year">
+        <view class="year-block">
+          <text class="year-text">{{data.title}}</text>
+        </view>
+      </view>
+      <view class="right-box">
+        <view wx:for="{{data.list}}" wx:key="index" class="datelist-item">
+          <text class="date-text">({{info_wxs.format(item.date)}})</text>
+          <text class="city-text">{{item.nation == '中国' ? '' : (item.nation+'-')}}{{item.city || item.province}}</text>
+          <image wx:if="{{showDelBtn}}" bindtap="del" data-id="{{item._id}}" data-title="{{item.nation == '中国' ? '' : (item.nation+'-')}}{{item.city || item.province}}" class="del-icon" mode="widthFix" src="../../images/del.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 删除确认框 -->
+<page-container 
+  show="{{show}}"
+  position="bottom"
+  bindenter="onEnter"
+  customStyle="z-index:999"
+>
+  <view class="detail-page">
+    <view class="confirm-box">是否确认在数据中删除<view class="high">【{{delData.title}}】</view>？</view>
+    <view class="footer-btn-box">
+      <button class="cancel" bindtap="exit">取消</button>
+      <button class="ok" bindtap="submit">确认</button>
+    </view>
+  </view>
+</page-container>
+
+<!-- 下方按钮 -->
+<view class="foot-btn">
+  <button class="btn" bindtap="goback">返回列表</button>
+</view>

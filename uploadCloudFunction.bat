@@ -1,0 +1,1 @@
+"D:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e footprint-4gvmnkmoe1f6c53c --n quickstartFunctions --r --project "G:\footprint" --report_first --report

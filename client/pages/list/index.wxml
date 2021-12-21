@@ -1,0 +1,23 @@
+<view class="container">
+  <map class="map" scale="3" longitude="104.5" latitude="34" markers="{{markers}}"></map>
+  <view class="footer">
+    <view class="text-block">
+      您去过<view class="high" bindtap="goInfo">{{nations.length}}</view>个国家的<view class="high" bindtap="goInfo">{{markers.length}}</view>个城市。
+    </view>
+    <button class="btn" bindtap="add">新增足迹</button>
+  </view>
+</view>
+
+<page-container 
+  show="{{show}}"
+  position="bottom"
+  bindenter="onEnter"
+>
+  <view class="detail-page">
+    <view class="addr-box">定位到您在<view class="addr-str">{{locationAddr.str}}</view>, 是否点亮该位置？</view>
+    <view class="footer-btn-box">
+      <button class="cancel" bindtap="exit">取消</button>
+      <button class="ok" bindtap="save">点亮</button>
+    </view>
+  </view>
+</page-container>

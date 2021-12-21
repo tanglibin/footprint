@@ -1,0 +1,31 @@
+.more-btn{display: flex;position: fixed;top: 0;right: 0;z-index: 999;padding: 30rpx 20rpx;}
+.dot{width: 12rpx;height: 12rpx;background: #ccc;border-radius: 50%;margin: 0 4rpx;}
+
+.scroll-view{height: 100%;}
+.wrap{padding-bottom: 200rpx;}
+.foot-btn{background-color: #f7f7f7;}
+
+.skin{display: flex;}
+.skin:first-child>view{padding-top: 60rpx;}
+.left-year{width: 160rpx;text-align: right;border-right: 2rpx solid #999;line-height: 50rpx;}
+.right-box{margin-bottom: 50rpx;}
+
+.year-block, .datelist-item{display: flex;align-items: center;}
+.year-block:after, .datelist-item:before{content:'';border-top: 2rpx solid #999;width: 20rpx;}
+.year-block{justify-content: flex-end;}
+.year-text{padding-right: 20rpx;}
+.datelist-item{line-height: 50rpx;}
+.datelist-item:before{content:'';border-top: 2rpx solid #999;width: 20rpx;}
+.date-text{font-size: 24rpx;color: #666;margin-right: 12rpx;padding-left: 20rpx;}
+
+.city-skin{padding-top: 40rpx;}
+.left-block{padding-left: 30rpx;color: #ff6780;}
+.city-box{padding-left: 80rpx;}
+.city-date-text{font-size: 24rpx;color: #999;margin-left: 12rpx;}
+.city-item{line-height: 46rpx;display: flex;align-items: center;}
+.del-icon{width: 32rpx;margin-left: 24rpx;}
+
+.confirm-box{display: flex;align-items: center;justify-content: center;padding: 45rpx 0;}
+.high{color: #ff6780;padding: 0 8rpx;}
+
+

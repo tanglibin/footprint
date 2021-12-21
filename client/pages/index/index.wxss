@@ -1,0 +1,23 @@
+page {
+  text-align: center;
+  background-image: linear-gradient(to bottom, #142437, #406694, #142437);
+}
+.title-box{
+  padding: 60rpx 0;
+}
+.title{
+  font-size: 32rpx;
+  color: #ff6780;
+  line-height: 80rpx;
+}
+
+@keyframes turn{
+  0%{transform:rotate(0deg);}
+  50%{transform:rotate(180deg);}
+  100%{transform:rotate(360deg);}
+}
+.earth-icon{
+  width: 70%;
+  max-width: 1140rpx;
+  animation:turn 15s linear infinite;
+}
