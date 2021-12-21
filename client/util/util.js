@@ -48,7 +48,7 @@ const Util = {
 
     /**添加标注 */
     addMark({date, lng, lat, nation, province, city}){
-      date = date || new Date().toLocaleString().substr(0, 10).replace(/\//g, '-');
+      date = date || this.formatDate(new Date());
       nation = nation || '中国';
 
       wx.showLoading();
@@ -71,7 +71,27 @@ const Util = {
           wx.hideLoading();
         })
       })
-    }
+    },
+
+    /**日期格式化 */
+    formatDate(date, format='yyyy-MM-dd'){
+      const o = {
+          'M+': date.getMonth() + 1, //月份
+          'd+': date.getDate(), //日
+          'h+': date.getHours(), //小时
+          'm+': date.getMinutes(), //分
+          's+': date.getSeconds() //秒
+      };
+      if (/(y+)/.test(format)) {
+          format = format.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+      }
+      for (let k in o) {
+          if (new RegExp('(' + k + ')').test(format)) {
+              format = format.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)));
+          }
+      }
+      return format;
+  }
 }
 
 module.exports = Util;
