@@ -143,4 +143,6 @@ Page({
 
   /**不加动画不生效 */
   onEnter(res) {},
+  onShareAppMessage() {},
+  onShareTimeline(){}
 });
