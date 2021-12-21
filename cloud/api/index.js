@@ -4,13 +4,10 @@ cloud.init({
 });
 const db = cloud.database();
 
-// 获取基础信息
-const wxContext = cloud.getWXContext();
-const openid = wxContext.OPENID;
-
 /**新增标注 */
 function addMark(data){
-  const {date, lng, lat, nation, province, city} = data;
+  const {date, lng, lat, nation, province, city, userInfo} = data;
+  const openid = userInfo.openId;
   return new Promise( (resolve, reject) => {
     db.collection('marks').where({openid, province, city}).get().then(res => {
       if(res.data.length){
@@ -38,8 +35,9 @@ function delMark(data){
 }
 
 /**获取记录 */
-function getList(){
+function getList(data){
   return new Promise( (resolve, reject) => {
+    const openid = data.userInfo.openId;
     db.collection('marks').where({openid}).get().then(res => {
       resolve(res.data);
     }).catch(()=>{
@@ -56,6 +54,6 @@ exports.main = async (event, context) => {
     case 'delMark': //删除标注
       return delMark(event);
     case 'getList': //获取记录
-        return getList();
+        return getList(event);
   }
 };
