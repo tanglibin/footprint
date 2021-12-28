@@ -39,7 +39,7 @@
         "useCompilerPlugins": false,
         "minifyWXML": true
     },
-    "appid": "",
+    "appid": "wx15bfef2fb41e73df",
     "projectname": "footprint",
     "libVersion": "2.14.1",
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",

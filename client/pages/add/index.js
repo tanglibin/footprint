@@ -23,28 +23,35 @@ Page({
 
   /**经度输入 */
   bindLngInput: function (e) {
+    this.cleanData();
     this.setData({
-      lng: e.detail.value,
-      province: '',
-      provinceActive: 0,
-      cityActive: '',
+      lng: e.detail.value
     })
   },
 
   /**纬度输入 */
   bindLatInput: function (e) {
+    this.cleanData();
     this.setData({
-      lat: e.detail.value,
-      province: '',
-      provinceActive: 0,
-      cityActive: '',
+      lat: e.detail.value
     })
   },
 
   /**打开城市选择浮层 */
   openRegion(){
+    this.cleanData();
     this.setData({
       show: true
+    })
+  },
+
+  /**还原数据 */
+  cleanData(){
+    this.setData({
+      province: '',
+      city: '',
+      provinceActive: 0,
+      cityActive: '',
     })
   },
 
@@ -65,9 +72,6 @@ Page({
       cityActive: c,
     })
   },
-
-  /**不加动画不生效 */
-  onEnter(res) {},
 
   /**完成城市选择 */
   select(){
@@ -117,5 +121,7 @@ Page({
     })
   },
   onShareAppMessage() {},
-  onShareTimeline(){}
+  onShareTimeline(){},
+   /**不加动画不生效 */
+   onEnter(res) {},
 });
